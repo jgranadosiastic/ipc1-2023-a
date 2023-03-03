@@ -16,7 +16,6 @@ public class Main {
         Articulo articulo = new Articulo();
         articulo.cambiarCostoBase(costoBase);
         
-        
         double detalle = articulo.calcularPrecioDetalle();
         System.out.println("Precio al detalle");
         System.out.println(detalle);
