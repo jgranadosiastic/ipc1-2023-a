@@ -51,5 +51,7 @@ public class Vehiculo {
         return avanceActual;
     }
     
-    
+    public void reiniciarAvance() {
+        avanceActual = 0;
+    }
 }

@@ -18,13 +18,10 @@ public class Main {
         
         /*bicicletasV[0] = bicicletaV;
         bicicletasV[1] = bicicletaV2;
-        bicicletasV[2] = bicicletaV3;
-        */
-        
+        bicicletasV[2] = bicicletaV3;*/
         bicicletas[0] = bicicletaV;
         bicicletas[1] = bicicletaV2;
         bicicletas[2] = bicicletaV3;
-        //bicicletaV.frenar();
         
         BicicletaPista bicicletaPista = new BicicletaPista();
         BicicletaPista bicicletaPista2 = new BicicletaPista();
@@ -33,8 +30,6 @@ public class Main {
         /*bicicletasP[0] = bicicletaPista;
         bicicletasP[1] = bicicletaPista2;
         bicicletasP[2] = bicicletaPista3;*/
-        //bicicletaPista.frenar();
-        
         bicicletas[3] = bicicletaPista;
         bicicletas[4] = bicicletaPista2;
         bicicletas[5] = bicicletaPista3;
@@ -43,6 +38,9 @@ public class Main {
         BicicletaMontaña montaña2 = new BicicletaMontaña();
         BicicletaMontaña montaña3 = new BicicletaMontaña();
         
+        /*bicicletasM[0] = montaña;
+        bicicletasM[1] = montaña2;
+        bicicletasM[2] = montaña3;*/
         bicicletas[6] = montaña;
         bicicletas[7] = montaña2;
         bicicletas[8] = montaña3;

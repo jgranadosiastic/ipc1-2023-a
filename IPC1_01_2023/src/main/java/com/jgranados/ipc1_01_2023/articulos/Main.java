@@ -13,8 +13,8 @@ public class Main {
         System.out.println("Ingrese costo base:");
         double costoBase = scanner.nextDouble();
         
-        Articulo articulo = new Articulo();
-        articulo.cambiarCostoBase(costoBase);
+        Articulo articulo = new Articulo(costoBase);
+        //articulo.cambiarCostoBase(costoBase);
         
         double detalle = articulo.calcularPrecioDetalle();
         System.out.println("Precio al detalle");

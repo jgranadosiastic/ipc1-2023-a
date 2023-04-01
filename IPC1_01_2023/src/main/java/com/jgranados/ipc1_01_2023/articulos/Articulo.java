@@ -15,7 +15,11 @@ public class Articulo {
     public static final double INCREMENTO_DETALLE = 0.30;
     public static final double INCREMENTO_MAYOR = 0.15;
     
-    private double costoBase;
+    private final double costoBase;
+    
+    public Articulo(double costoBase) {
+        this.costoBase = costoBase;
+    }
     
     public double calcularPrecioDetalle() {
         /**
@@ -39,7 +43,7 @@ public class Articulo {
         return costoBase + incremento;
     }
     
-    public void cambiarCostoBase(double costoBaseNuevo) {
+    /*public void cambiarCostoBase(double costoBaseNuevo) {
         costoBase = costoBaseNuevo;
-    }
+    }*/
 }
