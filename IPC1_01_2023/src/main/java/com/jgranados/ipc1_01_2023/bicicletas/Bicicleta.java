@@ -13,7 +13,7 @@ public class Bicicleta {
         System.out.println("Frenando");
     }
     
-    public void incrementarVelocidad() {
+    public final void incrementarVelocidad() {
         velocidad++;
         System.out.println("incrementando velocidad");
     }

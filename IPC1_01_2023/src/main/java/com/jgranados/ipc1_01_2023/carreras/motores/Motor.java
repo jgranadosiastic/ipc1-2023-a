@@ -4,8 +4,14 @@ package com.jgranados.ipc1_01_2023.carreras.motores;
  *
  * @author jose
  */
-public class Motor {
-    public int calcularAvance() {
-        return 0;
+public abstract class Motor {
+    private String numeroSerie;
+    
+    public abstract int calcularAvance();
+    
+    public String getNumeroSerie() {
+        return numeroSerie;
     }
+    
+    
 }
