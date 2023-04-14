@@ -4,30 +4,35 @@
  */
 package com.jgranados.ipc1_01_2023.swing;
 
+import com.jgranados.ipc1_01_2023.exceptions.TableroExcepcion;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author jose
  */
 public class MiFrame extends javax.swing.JFrame {
-    
+
     public static final String BOMBA_1 = "/recursos/imgs/b1.jpeg";
     JButton otroBoton = new JButton();
+    private BackendLabels backend;
 
     /**
      * Creates new form MiFrame
      */
     public MiFrame() {
-
+        backend = new BackendLabels();
         setPreferredSize(new Dimension(200, 200));
         JButton unBoton = new JButton();
         unBoton.setText("Un boton");
         unBoton.setSize(100, 25);
+        unBoton.setLocation(0, 0);
 
         unBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -35,13 +40,19 @@ public class MiFrame extends javax.swing.JFrame {
             }
         });
 
-        
         otroBoton.setText("Otro boton");
         otroBoton.setSize(100, 25);
+        otroBoton.setLocation(0, 35);
         add(otroBoton);
 
         add(unBoton);
         add(otroBoton);
+
+        otroBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarEtiquetas();
+            }
+        });
         initComponents();
 
     }
@@ -55,8 +66,14 @@ public class MiFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        numeroEtiquetasTxt = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+        getContentPane().setLayout(null);
+
+        numeroEtiquetasTxt.setPreferredSize(new java.awt.Dimension(50, 35));
+        getContentPane().add(numeroEtiquetasTxt);
+        numeroEtiquetasTxt.setBounds(175, 5, 50, 35);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -104,6 +121,46 @@ public class MiFrame extends javax.swing.JFrame {
         otroBoton.setIcon(image);
     }
 
+    private void agregarEtiquetas() {
+        /*String valor = numeroEtiquetasTxt.getText();
+        try {
+
+            Integer valorInt = Integer.valueOf(valor);
+            for (int i = 0; i < valorInt; i++) {
+                MiCasilla unaLabel = new MiCasilla("etiqueta No. " + (i + 1));
+                unaLabel.setSize(50, 50);
+
+                this.add(unaLabel);
+                unaLabel.setLocation(0, (i * 50) + 100);
+
+            }
+            revalidate();
+            repaint();
+            pack();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El numero de eetiquetas no es correcto");
+        }*/
+        try {
+            MiCasilla[] casillas = backend.generarCasillas(numeroEtiquetasTxt.getText());
+            for (MiCasilla casilla : casillas) {
+                this.add(casilla);
+            }
+            revalidate();
+            repaint();
+            pack();
+        } catch (TableroExcepcion e) {
+            //JOptionPane.showMessageDialog(this, e.getMessage());
+            MiCasilla[] casillas = backend.generarCasillas(1);
+            for (MiCasilla casilla : casillas) {
+                this.add(casilla);
+            }
+            revalidate();
+            repaint();
+            pack();
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField numeroEtiquetasTxt;
     // End of variables declaration//GEN-END:variables
 }
