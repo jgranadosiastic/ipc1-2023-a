@@ -19,7 +19,7 @@ public class BackendLabels {
             
             return generarCasillas(valorInt);
         } catch (NumberFormatException e) {
-            throw new TableroExcepcion("El numero de eetiquetas no es correcto");
+            throw new TableroExcepcion("El valor ingresado no es numero valido");
         }
     }
 

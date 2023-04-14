@@ -4,8 +4,10 @@
  */
 package com.jgranados.ipc1_01_2023.swing;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -110,12 +112,25 @@ public class OtroFrame extends javax.swing.JFrame {
         try {
 
             Scanner scanner = new Scanner(new File(archivo));
-            while(scanner.hasNextLine()) {
+            while (scanner.hasNextLine()) {
                 jTextArea1.append(scanner.nextLine());
             }
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(this, "Error al abrir el archivo");
         }
+
+        try {
+
+            FileReader fileReader = new FileReader("miArchivo.txt");
+            BufferedReader reader = new BufferedReader(fileReader);
+            String line = reader.readLine();
+            while (line != null) {
+                jTextArea1.append(line);
+                line = reader.readLine();
+            }
+        } catch (Exception e) {
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

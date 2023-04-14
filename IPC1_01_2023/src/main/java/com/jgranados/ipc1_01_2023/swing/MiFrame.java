@@ -5,6 +5,7 @@
 package com.jgranados.ipc1_01_2023.swing;
 
 import com.jgranados.ipc1_01_2023.exceptions.TableroExcepcion;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -12,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.OptionPaneUI;
 
 /**
  *
@@ -22,13 +24,14 @@ public class MiFrame extends javax.swing.JFrame {
     public static final String BOMBA_1 = "/recursos/imgs/b1.jpeg";
     JButton otroBoton = new JButton();
     private BackendLabels backend;
+    private MiCasilla[] casillas;
 
     /**
      * Creates new form MiFrame
      */
     public MiFrame() {
         backend = new BackendLabels();
-        setPreferredSize(new Dimension(200, 200));
+        setPreferredSize(new Dimension(300, 300));
         JButton unBoton = new JButton();
         unBoton.setText("Un boton");
         unBoton.setSize(100, 25);
@@ -67,6 +70,7 @@ public class MiFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         numeroEtiquetasTxt = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -75,8 +79,24 @@ public class MiFrame extends javax.swing.JFrame {
         getContentPane().add(numeroEtiquetasTxt);
         numeroEtiquetasTxt.setBounds(175, 5, 50, 35);
 
+        jButton1.setText("pintar verde");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(240, 10, 140, 28);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // AQUI
+        for (MiCasilla casilla : casillas) {
+            casilla.setForeground(Color.GREEN);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,7 +144,7 @@ public class MiFrame extends javax.swing.JFrame {
     private void agregarEtiquetas() {
         /*String valor = numeroEtiquetasTxt.getText();
         try {
-
+        
             Integer valorInt = Integer.valueOf(valor);
             for (int i = 0; i < valorInt; i++) {
                 MiCasilla unaLabel = new MiCasilla("etiqueta No. " + (i + 1));
@@ -141,7 +161,7 @@ public class MiFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El numero de eetiquetas no es correcto");
         }*/
         try {
-            MiCasilla[] casillas = backend.generarCasillas(numeroEtiquetasTxt.getText());
+            casillas = backend.generarCasillas(numeroEtiquetasTxt.getText());
             for (MiCasilla casilla : casillas) {
                 this.add(casilla);
             }
@@ -149,18 +169,19 @@ public class MiFrame extends javax.swing.JFrame {
             repaint();
             pack();
         } catch (TableroExcepcion e) {
-            //JOptionPane.showMessageDialog(this, e.getMessage());
-            MiCasilla[] casillas = backend.generarCasillas(1);
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            /*MiCasilla[] casillas = backend.generarCasillas(1);
             for (MiCasilla casilla : casillas) {
                 this.add(casilla);
             }
             revalidate();
             repaint();
-            pack();
+            pack();*/
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JTextField numeroEtiquetasTxt;
     // End of variables declaration//GEN-END:variables
 }
