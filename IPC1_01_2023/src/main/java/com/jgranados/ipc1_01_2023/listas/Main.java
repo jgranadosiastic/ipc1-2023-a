@@ -1,6 +1,8 @@
 package com.jgranados.ipc1_01_2023.listas;
 
+import com.jgranados.ipc1_01_2023.listas.genericas.ListaGenerica;
 import com.jgranados.ipc1_01_2023.exceptions.ListaException;
+import javax.swing.JButton;
 
 /**
  *
@@ -88,5 +90,25 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        /*try {
+            String algo = "l";
+            JButton[] arr = new JButton[5];
+            arr[1] = algo;
+            
+            ListaObject listaButtons = new ListaObject();
+            listaButtons.agregarDato("un dato");
+            listaButtons.agregarDato(new JButton("1"));
+            listaButtons.agregarDato(new JButton("2"));
+            
+            JButton boton1 = (JButton) listaButtons.obtenerValor(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+        ListaGenerica<String> miListaString = new ListaGenerica<>();
+        miListaString.agregarDato("v1");
+        miListaString.agregarDato("v2");
+        ListaGenerica<Integer> miListaInt = new ListaGenerica<>();
+        miListaInt.agregarDato(25);
     }
 }
