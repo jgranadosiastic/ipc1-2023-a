@@ -1,10 +1,12 @@
 package com.jgranados.ipc1_01_2023.alumnos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jose
  */
-public class Alumno {
+public class Alumno implements Serializable {
     private String cui;
     private String nombre;
     private double[] notas;
